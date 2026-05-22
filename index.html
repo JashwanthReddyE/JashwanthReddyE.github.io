@@ -1127,6 +1127,197 @@ footer.contact {
 }
 .footer-bottom .signal { display: flex; align-items: center; gap: 8px; }
 
+/* --- FEATURED PROJECT --- */
+.proj-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+.proj-card-head {
+  padding: 22px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  background: var(--surface-2);
+}
+.proj-title-block { flex: 1; min-width: 0; }
+.proj-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 12px;
+  padding: 4px 10px;
+  border: 1px solid rgba(74,222,128,0.25);
+  border-radius: 100px;
+  background: rgba(74,222,128,0.06);
+}
+.proj-pulse {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 6px var(--green);
+  animation: pulse 2s infinite;
+}
+.proj-title {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+.proj-title em { font-style: italic; color: var(--cyan); font-weight: 300; }
+.proj-sub {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+}
+.proj-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  background: rgba(94,234,212,0.06);
+  border: 1px solid rgba(94,234,212,0.3);
+  border-radius: var(--radius-sm);
+  transition: all 0.2s;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.proj-cta:hover {
+  background: rgba(94,234,212,0.14);
+  border-color: var(--cyan);
+  transform: translateY(-1px);
+}
+.proj-cta svg { width: 12px; height: 12px; }
+.proj-card-body { padding: 22px; }
+.proj-prose {
+  font-family: var(--font-display);
+  font-size: 15px;
+  line-height: 1.65;
+  font-weight: 300;
+  color: var(--text-dim);
+  margin-bottom: 20px;
+}
+.proj-prose strong { color: var(--text); font-weight: 500; }
+.proj-prose em { font-style: italic; color: var(--cyan); font-weight: 400; }
+
+.proj-section {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px;
+  margin-bottom: 24px;
+}
+.proj-section-title {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.proj-section-title::before {
+  content: '';
+  width: 16px; height: 1px;
+  background: var(--cyan);
+}
+.proj-arch-img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+  display: block;
+  border: 1px solid var(--line);
+}
+
+.proj-decisions-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+.proj-decision {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 18px;
+  position: relative;
+  transition: border-color 0.2s;
+}
+.proj-decision:hover { border-color: var(--line-2); }
+.proj-decision-tag {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  padding: 3px 8px;
+  background: rgba(94,234,212,0.06);
+  border: 1px solid rgba(94,234,212,0.2);
+  border-radius: var(--radius-sm);
+  display: inline-block;
+  margin-bottom: 12px;
+}
+.proj-decision-head {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  margin-bottom: 10px;
+}
+.proj-decision-head em { font-style: italic; color: var(--cyan); font-weight: 300; }
+.proj-decision-body {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text-dim);
+}
+
+.proj-screens {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+.proj-screen {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.proj-screen:hover {
+  border-color: var(--cyan);
+  transform: translateY(-2px);
+}
+.proj-screen img { width: 100%; height: auto; display: block; }
+.proj-screen figcaption {
+  padding: 10px 14px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-dim);
+  border-top: 1px solid var(--line);
+  letter-spacing: 0.02em;
+}
+
 /* --- Toast --- */
 .toast {
   position: fixed;
@@ -1380,6 +1571,20 @@ footer.contact {
   .win-headline { font-size: 22px; min-height: 110px; margin-bottom: 16px; }
   .win-body { font-size: 14px; }
 
+  /* FEATURED PROJECT */
+  .proj-card-head { padding: 28px 30px; gap: 24px; flex-wrap: nowrap; }
+  .proj-title { font-size: 34px; margin-bottom: 10px; }
+  .proj-sub { font-size: 12px; }
+  .proj-card-body { padding: 28px 30px; }
+  .proj-prose { font-size: 17px; line-height: 1.7; max-width: 900px; margin-bottom: 24px; }
+  .proj-section { padding: 28px 30px; margin-bottom: 28px; }
+  .proj-decisions-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .proj-decision { padding: 22px; }
+  .proj-decision-head { font-size: 20px; min-height: 76px; }
+  .proj-decision-body { font-size: 14px; }
+  .proj-screens { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .proj-screen figcaption { padding: 12px 16px; font-size: 11px; }
+
   /* CONTACT */
   footer.contact { padding: 120px 0 60px; }
   .contact-grid {
@@ -1457,6 +1662,7 @@ footer.contact {
       <a href="#experience" data-target="experience"><svg><use href="#i-pipeline"/></svg> Pipeline</a>
       <a href="#stack" data-target="stack"><svg><use href="#i-terminal"/></svg> Stack</a>
       <a href="#work" data-target="work"><svg><use href="#i-chart"/></svg> Work</a>
+      <a href="#project" data-target="project"><svg><use href="#i-cpu"/></svg> Project</a>
       <a href="#contact" data-target="contact"><svg><use href="#i-connector"/></svg> Connect</a>
     </div>
 
@@ -2161,13 +2367,117 @@ footer.contact {
   </div>
 </section>
 
+<!-- ======================= FEATURED PROJECT ======================= -->
+<section class="block" id="project">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">
+        <svg><use href="#i-cpu"/></svg> § 06 / Featured Project
+      </div>
+      <h2 class="section-title">A live AWS pipeline I shipped <em>solo, end-to-end</em>.</h2>
+    </div>
+
+    <!-- Project header card -->
+    <div class="proj-card">
+      <div class="proj-card-head">
+        <div class="proj-title-block">
+          <div class="proj-meta">
+            <span class="proj-pulse"></span>
+            <span>LIVE · AWS Free Tier · Open Source</span>
+          </div>
+          <h3 class="proj-title">Stock Sentiment &amp; Forecast <em>Pipeline</em></h3>
+          <p class="proj-sub">News ingest → LLM sentiment scoring → 5-day price forecast → Streamlit dashboard</p>
+        </div>
+        <a href="https://github.com/JashwanthReddyE/aws-stock-sentiment-pipeline" target="_blank" rel="noopener noreferrer" class="proj-cta">
+          View on GitHub
+          <svg><use href="#i-arrow-up-right"/></svg>
+        </a>
+      </div>
+      <div class="proj-card-body">
+        <p class="proj-prose">
+          A complete AWS data pipeline scoped to the <strong>Free Tier</strong>. EventBridge fires a
+          Lambda every 30 minutes that pulls financial news from Finnhub. An <em>S3:ObjectCreated</em>
+          event triggers a second Lambda that scores every headline through
+          <strong>Bedrock Claude Haiku</strong> (−1 bearish → +1 bullish) and writes Parquet to silver.
+          A daily forecast Lambda pulls 60 days of prices from Alpha Vantage, joins the LLM sentiment
+          via <strong>Athena</strong>, projects a 5-day trend, and asks Claude to write a plain-English
+          market brief. A Streamlit dashboard reads it all back. Everything provisioned with
+          <strong>Terraform</strong>.
+        </p>
+        <div class="stack-row">
+          <span class="stack-pill">AWS Lambda</span>
+          <span class="stack-pill">S3 Medallion</span>
+          <span class="stack-pill">Bedrock</span>
+          <span class="stack-pill">Claude Haiku</span>
+          <span class="stack-pill">Glue + Athena</span>
+          <span class="stack-pill">EventBridge</span>
+          <span class="stack-pill">Streamlit</span>
+          <span class="stack-pill">Plotly</span>
+          <span class="stack-pill">Terraform</span>
+          <span class="stack-pill">Python 3.12</span>
+          <span class="stack-pill">pytest + moto</span>
+          <span class="stack-pill">GitHub Actions</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Architecture diagram -->
+    <div class="proj-section">
+      <div class="proj-section-title">Architecture</div>
+      <img src="assets/stock-sentiment-architecture.png" alt="Stock sentiment pipeline architecture" class="proj-arch-img" loading="lazy" />
+    </div>
+
+    <!-- Engineering decisions -->
+    <div class="proj-section">
+      <div class="proj-section-title">Decisions under constraint</div>
+      <div class="proj-decisions-grid">
+        <article class="proj-decision">
+          <span class="proj-decision-tag">API SELECTION</span>
+          <h4 class="proj-decision-head">Yahoo Finance <em>silently blocks AWS IPs</em>.</h4>
+          <p class="proj-decision-body">Every <code>yfinance</code> tutorial assumes Yahoo will answer. From a Lambda it doesn't — calls just time out. Swapped to Finnhub for news and Alpha Vantage for prices, splitting two free tiers to fit both quotas.</p>
+        </article>
+        <article class="proj-decision">
+          <span class="proj-decision-tag">IAM GOTCHA</span>
+          <h4 class="proj-decision-head">Athena needs <em>GetBucketLocation</em>, separately.</h4>
+          <p class="proj-decision-body">PutObject grants aren't enough — Athena does a region pre-flight that requires its own permission, returning a misleading "bucket does not exist" error if it's missing. Documented in the README so the next person saves the hour.</p>
+        </article>
+        <article class="proj-decision">
+          <span class="proj-decision-tag">RESILIENCE</span>
+          <h4 class="proj-decision-head">Graceful degradation <em>beats happy path</em>.</h4>
+          <p class="proj-decision-body">Alpha Vantage rate-limits at 1 req/sec — burst the loop and 9 of 10 tickers silently lose data. Sleep between calls, log the API's verbatim message on rate-limit, default sentiment to 0 if Athena is empty. Worst-case run still ships output.</p>
+        </article>
+      </div>
+    </div>
+
+    <!-- Dashboard screenshots -->
+    <div class="proj-section">
+      <div class="proj-section-title">Dashboard · 3 tabs (Streamlit + Plotly)</div>
+      <div class="proj-screens">
+        <figure class="proj-screen">
+          <img src="assets/stock-sentiment-prices.png" alt="Live Prices tab — Plotly line chart" loading="lazy" />
+          <figcaption>① Live Prices · 60-day close-price trend</figcaption>
+        </figure>
+        <figure class="proj-screen">
+          <img src="assets/stock-sentiment-heatmap.png" alt="Sentiment Heatmap tab" loading="lazy" />
+          <figcaption>② Sentiment Heatmap · ticker × hour · RdYlGn</figcaption>
+        </figure>
+        <figure class="proj-screen">
+          <img src="assets/stock-sentiment-brief.png" alt="AI Forecast & Brief tab" loading="lazy" />
+          <figcaption>③ AI Forecast + Claude Haiku market brief</figcaption>
+        </figure>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- ======================= CONTACT / SOCIALS ======================= -->
 <footer class="contact" id="contact">
   <div class="container">
 
     <div class="section-head">
       <div class="section-label">
-        <svg><use href="#i-connector"/></svg> § 06 / Connect
+        <svg><use href="#i-connector"/></svg> § 07 / Connect
       </div>
       <h2 class="section-title">Got a <em>data problem</em>? Let's talk.</h2>
     </div>
