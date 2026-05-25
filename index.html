@@ -769,6 +769,42 @@ section.block {
 
 .arch-desktop { display: none; }
 
+/* --- PLATFORM (Stack + Reference Architecture sub-blocks) --- */
+.platform-block + .platform-block {
+  margin-top: 48px;
+  padding-top: 36px;
+  border-top: 1px dashed var(--line);
+}
+.platform-sub-head {
+  margin-bottom: 22px;
+}
+.platform-sub-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.platform-sub-label::before {
+  content: '';
+  width: 16px; height: 1px;
+  background: var(--cyan);
+}
+.platform-sub-label svg { width: 13px; height: 13px; }
+.platform-sub-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+.platform-sub-title em { font-style: italic; color: var(--cyan); font-weight: 300; }
+
 /* --- STACK / TERMINAL --- */
 .stack-terminal {
   background: var(--surface);
@@ -905,7 +941,42 @@ section.block {
   background: rgba(94,234,212,0.04);
 }
 
-/* --- WINS --- */
+/* --- WINS (nested under Experience) --- */
+.exp-wins {
+  margin-top: 48px;
+  padding-top: 36px;
+  border-top: 1px dashed var(--line);
+}
+.exp-wins-head {
+  margin-bottom: 28px;
+}
+.exp-wins-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.exp-wins-label::before {
+  content: '';
+  width: 16px; height: 1px;
+  background: var(--cyan);
+}
+.exp-wins-label svg { width: 13px; height: 13px; }
+.exp-wins-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--text);
+}
+.exp-wins-title em { font-style: italic; color: var(--cyan); font-weight: 300; }
+
 .wins-grid {
   display: flex;
   flex-direction: column;
@@ -1133,15 +1204,15 @@ footer.contact {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   overflow: hidden;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 .proj-card-head {
-  padding: 22px;
+  padding: 18px;
   border-bottom: 1px solid var(--line);
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 16px;
+  gap: 14px;
   flex-wrap: wrap;
   background: var(--surface-2);
 }
@@ -1155,8 +1226,8 @@ footer.contact {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--green);
-  margin-bottom: 12px;
-  padding: 4px 10px;
+  margin-bottom: 10px;
+  padding: 3px 9px;
   border: 1px solid rgba(74,222,128,0.25);
   border-radius: 100px;
   background: rgba(74,222,128,0.06);
@@ -1170,19 +1241,19 @@ footer.contact {
 }
 .proj-title {
   font-family: var(--font-display);
-  font-size: 26px;
+  font-size: 22px;
   font-weight: 400;
   letter-spacing: -0.025em;
   line-height: 1.1;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 .proj-title em { font-style: italic; color: var(--cyan); font-weight: 300; }
 .proj-sub {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 10.5px;
   color: var(--text-dim);
   letter-spacing: 0.02em;
-  line-height: 1.5;
+  line-height: 1.45;
 }
 .proj-cta {
   display: inline-flex;
@@ -1207,14 +1278,43 @@ footer.contact {
   transform: translateY(-1px);
 }
 .proj-cta svg { width: 12px; height: 12px; }
-.proj-card-body { padding: 22px; }
+
+.proj-cta-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+  align-items: stretch;
+}
+.proj-cta-stack .proj-cta {
+  justify-content: center;
+}
+.proj-cta-primary {
+  color: var(--bg);
+  background: var(--cyan);
+  border-color: var(--cyan);
+}
+.proj-cta-primary:hover {
+  background: #7af0dc;
+  border-color: #7af0dc;
+}
+.proj-cta-pulse {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--bg);
+  box-shadow: 0 0 0 3px rgba(10,10,11,0.25);
+  animation: pulse 2s infinite;
+  flex-shrink: 0;
+}
+
+.proj-card-body { padding: 18px; }
 .proj-prose {
   font-family: var(--font-display);
-  font-size: 15px;
-  line-height: 1.65;
+  font-size: 14px;
+  line-height: 1.55;
   font-weight: 300;
   color: var(--text-dim);
-  margin-bottom: 20px;
+  margin-bottom: 14px;
 }
 .proj-prose strong { color: var(--text); font-weight: 500; }
 .proj-prose em { font-style: italic; color: var(--cyan); font-weight: 400; }
@@ -1223,8 +1323,8 @@ footer.contact {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 22px;
-  margin-bottom: 24px;
+  padding: 18px;
+  margin-bottom: 16px;
 }
 .proj-section-title {
   font-family: var(--font-mono);
@@ -1232,7 +1332,7 @@ footer.contact {
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--cyan);
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -1245,6 +1345,8 @@ footer.contact {
 .proj-arch-img {
   width: 100%;
   height: auto;
+  max-height: 360px;
+  object-fit: contain;
   border-radius: var(--radius-sm);
   display: block;
   border: 1px solid var(--line);
@@ -1253,13 +1355,13 @@ footer.contact {
 .proj-decisions-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 12px;
+  gap: 10px;
 }
 .proj-decision {
   background: var(--bg-elev);
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
-  padding: 18px;
+  padding: 14px;
   position: relative;
   transition: border-color 0.2s;
 }
@@ -1270,32 +1372,32 @@ footer.contact {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--cyan);
-  padding: 3px 8px;
+  padding: 2px 7px;
   background: rgba(94,234,212,0.06);
   border: 1px solid rgba(94,234,212,0.2);
   border-radius: var(--radius-sm);
   display: inline-block;
-  margin-bottom: 12px;
+  margin-bottom: 9px;
 }
 .proj-decision-head {
   font-family: var(--font-display);
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
   letter-spacing: -0.015em;
-  line-height: 1.25;
-  margin-bottom: 10px;
+  line-height: 1.22;
+  margin-bottom: 8px;
 }
 .proj-decision-head em { font-style: italic; color: var(--cyan); font-weight: 300; }
 .proj-decision-body {
-  font-size: 13px;
-  line-height: 1.55;
+  font-size: 12.5px;
+  line-height: 1.5;
   color: var(--text-dim);
 }
 
 .proj-screens {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 14px;
+  gap: 10px;
 }
 .proj-screen {
   background: var(--bg-elev);
@@ -1310,9 +1412,9 @@ footer.contact {
 }
 .proj-screen img { width: 100%; height: auto; display: block; }
 .proj-screen figcaption {
-  padding: 10px 14px;
+  padding: 8px 12px;
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: 10px;
   color: var(--text-dim);
   border-top: 1px solid var(--line);
   letter-spacing: 0.02em;
@@ -1424,7 +1526,7 @@ footer.contact {
   .hero-tagline {
     font-size: clamp(22px, 2vw, 28px);
     margin-bottom: 40px;
-    min-height: 100px;
+    min-height: 120px;
   }
 
   .hero-grid {
@@ -1551,7 +1653,18 @@ footer.contact {
   .stack-filter { font-size: 11px; padding: 6px 12px; }
   .stack-tag { font-size: 12px; padding: 6px 12px; }
 
-  /* WINS */
+  /* WINS (nested under Experience) */
+  .exp-wins { margin-top: 80px; padding-top: 56px; }
+  .exp-wins-head { margin-bottom: 36px; }
+  .exp-wins-label { font-size: 11px; }
+  .exp-wins-title { font-size: clamp(28px, 2.6vw, 36px); max-width: 720px; }
+
+  /* PLATFORM sub-blocks */
+  .platform-block + .platform-block { margin-top: 80px; padding-top: 56px; }
+  .platform-sub-head { margin-bottom: 28px; }
+  .platform-sub-label { font-size: 11px; }
+  .platform-sub-title { font-size: clamp(26px, 2.4vw, 32px); max-width: 720px; }
+
   .wins-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1572,18 +1685,20 @@ footer.contact {
   .win-body { font-size: 14px; }
 
   /* FEATURED PROJECT */
-  .proj-card-head { padding: 28px 30px; gap: 24px; flex-wrap: nowrap; }
-  .proj-title { font-size: 34px; margin-bottom: 10px; }
-  .proj-sub { font-size: 12px; }
-  .proj-card-body { padding: 28px 30px; }
-  .proj-prose { font-size: 17px; line-height: 1.7; max-width: 900px; margin-bottom: 24px; }
-  .proj-section { padding: 28px 30px; margin-bottom: 28px; }
-  .proj-decisions-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; }
-  .proj-decision { padding: 22px; }
-  .proj-decision-head { font-size: 20px; min-height: 76px; }
-  .proj-decision-body { font-size: 14px; }
-  .proj-screens { grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .proj-screen figcaption { padding: 12px 16px; font-size: 11px; }
+  .proj-card { margin-bottom: 20px; }
+  .proj-card-head { padding: 22px 26px; gap: 20px; flex-wrap: nowrap; }
+  .proj-title { font-size: 26px; margin-bottom: 8px; }
+  .proj-sub { font-size: 11.5px; }
+  .proj-card-body { padding: 22px 26px; }
+  .proj-prose { font-size: 15px; line-height: 1.6; max-width: 880px; margin-bottom: 16px; }
+  .proj-section { padding: 22px 26px; margin-bottom: 20px; }
+  .proj-arch-img { max-height: 420px; }
+  .proj-decisions-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .proj-decision { padding: 18px; }
+  .proj-decision-head { font-size: 17px; min-height: 56px; margin-bottom: 8px; }
+  .proj-decision-body { font-size: 13px; }
+  .proj-screens { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .proj-screen figcaption { padding: 10px 14px; font-size: 10.5px; }
 
   /* CONTACT */
   footer.contact { padding: 120px 0 60px; }
@@ -1646,6 +1761,7 @@ footer.contact {
     <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
     <symbol id="i-chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></symbol>
     <symbol id="i-filter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="2" y1="13" x2="22" y2="13"/></symbol>
   </defs>
 </svg>
 
@@ -1659,9 +1775,8 @@ footer.contact {
 
     <div class="nav-links">
       <a href="#about" data-target="about"><svg><use href="#i-code"/></svg> About</a>
-      <a href="#experience" data-target="experience"><svg><use href="#i-pipeline"/></svg> Pipeline</a>
-      <a href="#stack" data-target="stack"><svg><use href="#i-terminal"/></svg> Stack</a>
-      <a href="#work" data-target="work"><svg><use href="#i-chart"/></svg> Work</a>
+      <a href="#experience" data-target="experience"><svg><use href="#i-briefcase"/></svg> Experience</a>
+      <a href="#stack" data-target="stack"><svg><use href="#i-terminal"/></svg> Tools</a>
       <a href="#project" data-target="project"><svg><use href="#i-cpu"/></svg> Projects</a>
       <a href="#contact" data-target="contact"><svg><use href="#i-connector"/></svg> Connect</a>
     </div>
@@ -1692,28 +1807,38 @@ footer.contact {
       <span class="stack-chip">$ stack: azure · aws · snowflake · databricks · dbt</span>
     </p>
 
-    <!-- Code window -->
-    <div class="code-window reveal">
-      <div class="code-titlebar">
-        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
-        <span class="filename">~/pipelines/fraud_detection.py</span>
-        <span class="lang">python</span>
+  </div>
+</header>
+
+<!-- ======================= ABOUT ======================= -->
+<section class="block" id="about">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-label">
+        <svg><use href="#i-code"/></svg> § 01 / About
       </div>
-      <div class="code-body">
-        <div class="line"><span class="ln">1</span><span><span class="kw">from</span> <span class="var">databricks</span> <span class="kw">import</span> StructuredStreaming</span></div>
-        <div class="line"><span class="ln">2</span><span><span class="kw">from</span> <span class="var">delta.tables</span> <span class="kw">import</span> DeltaTable</span></div>
-        <div class="line"><span class="ln">3</span><span>&nbsp;</span></div>
-        <div class="line"><span class="ln">4</span><span><span class="com"># real-time fraud scoring · &lt; 8s end-to-end</span></span></div>
-        <div class="line"><span class="ln">5</span><span><span class="fn">pipeline</span> <span class="punct">=</span> <span class="punct">(</span></span></div>
-        <div class="line"><span class="ln">6</span><span>&nbsp;&nbsp;<span class="var">spark</span><span class="punct">.</span><span class="fn">readStream</span></span></div>
-        <div class="line"><span class="ln">7</span><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="punct">.</span><span class="fn">format</span><span class="punct">(</span><span class="str">"eventhubs"</span><span class="punct">)</span></span></div>
-        <div class="line"><span class="ln">8</span><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="punct">.</span><span class="fn">option</span><span class="punct">(</span><span class="str">"maxEventsPerTrigger"</span><span class="punct">,</span> <span class="num">100_000</span><span class="punct">)</span></span></div>
-        <div class="line"><span class="ln">9</span><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="punct">.</span><span class="fn">load</span><span class="punct">()</span></span></div>
-        <div class="line"><span class="ln">10</span><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="punct">.</span><span class="fn">transform</span><span class="punct">(</span><span class="var">enrich_features</span><span class="punct">)</span></span></div>
-        <div class="line"><span class="ln">11</span><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="punct">.</span><span class="fn">writeStream</span></span></div>
-        <div class="line"><span class="ln">12</span><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="punct">.</span><span class="fn">trigger</span><span class="punct">(</span><span class="var">processingTime</span><span class="punct">=</span><span class="str">"5 seconds"</span><span class="punct">)</span></span></div>
-        <div class="line"><span class="ln">13</span><span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="punct">.</span><span class="fn">toTable</span><span class="punct">(</span><span class="str">"gold.fraud_alerts"</span><span class="punct">)</span></span></div>
-        <div class="line"><span class="ln">14</span><span><span class="punct">)</span></span></div>
+      <h2 class="section-title">I build platforms that <em>compliance, engineers, and executives</em> can all trust.</h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-comment"># /background</div>
+      <div class="about-prose">
+        <p>
+          I'm a multi-cloud data engineer with <strong>four years</strong> of hands-on experience shipping
+          enterprise data platforms across <em>banking, retail, and healthcare</em>. The work usually starts
+          the same way: someone is paying for a fragile legacy stack, or waiting until tomorrow morning for
+          numbers they need right now.
+        </p>
+        <p>
+          My job is to make that disappear. I design the <strong>streaming layer</strong>, model the warehouse,
+          wire up <strong>CI/CD</strong>, build the data quality framework, and hand the team something they
+          can operate without me on call.
+        </p>
+        <p>
+          Lately I've been folding <em>LLM-assisted tooling</em> into the development loop — using
+          Azure OpenAI and GitHub Copilot to draft transformations, generate documentation, and let
+          analysts query Snowflake in plain English.
+        </p>
       </div>
     </div>
 
@@ -1857,40 +1982,6 @@ footer.contact {
     </div>
 
   </div>
-</header>
-
-<!-- ======================= ABOUT ======================= -->
-<section class="block" id="about">
-  <div class="container">
-    <div class="section-head">
-      <div class="section-label">
-        <svg><use href="#i-code"/></svg> § 01 / About
-      </div>
-      <h2 class="section-title">I build platforms that <em>compliance, engineers, and executives</em> can all trust.</h2>
-    </div>
-
-    <div class="about-grid">
-      <div class="about-comment"># /background</div>
-      <div class="about-prose">
-        <p>
-          I'm a multi-cloud data engineer with <strong>four years</strong> of hands-on experience shipping
-          enterprise data platforms across <em>banking, retail, and healthcare</em>. The work usually starts
-          the same way: someone is paying for a fragile legacy stack, or waiting until tomorrow morning for
-          numbers they need right now.
-        </p>
-        <p>
-          My job is to make that disappear. I design the <strong>streaming layer</strong>, model the warehouse,
-          wire up <strong>CI/CD</strong>, build the data quality framework, and hand the team something they
-          can operate without me on call.
-        </p>
-        <p>
-          Lately I've been folding <em>LLM-assisted tooling</em> into the development loop — using
-          Azure OpenAI and GitHub Copilot to draft transformations, generate documentation, and let
-          analysts query Snowflake in plain English.
-        </p>
-      </div>
-    </div>
-  </div>
 </section>
 
 <!-- ======================= EXPERIENCE (interactive tabs) ======================= -->
@@ -1898,7 +1989,7 @@ footer.contact {
   <div class="container">
     <div class="section-head">
       <div class="section-label">
-        <svg><use href="#i-pipeline"/></svg> § 02 / Pipeline
+        <svg><use href="#i-briefcase"/></svg> § 02 / Experience
       </div>
       <h2 class="section-title">Where I've shipped — and what <em>actually moved</em>.</h2>
     </div>
@@ -2013,21 +2104,152 @@ footer.contact {
 
       </div>
     </div>
+
+    <!-- Selected wins (rolled-up outcomes across roles) -->
+    <div class="exp-wins" id="wins">
+      <div class="exp-wins-head">
+        <div class="exp-wins-label">
+          <svg><use href="#i-chart"/></svg> Selected Wins
+        </div>
+        <h3 class="exp-wins-title">Specific problems, <em>specific outcomes</em>.</h3>
+      </div>
+
+      <div class="wins-grid">
+        <div class="win">
+          <div class="win-meta"><span class="tag">LATENCY</span> CGI · Banking</div>
+          <h3 class="win-headline">From <em>T+1 batch</em> to event-to-alert in <em>under 8 seconds</em>.</h3>
+          <p class="win-body">Replaced an overnight fraud-scoring job with a Lambda speed layer on Event Hub + Databricks Structured Streaming. Diagnosed partition skew with salted keys to keep p99 stable.</p>
+          <div class="win-query">
+            <span class="ok">✓</span> latency p99: <span class="num">7.4s</span><span class="sep">·</span>throughput: <span class="num">2.1M/hr</span>
+          </div>
+        </div>
+        <div class="win">
+          <div class="win-meta"><span class="tag">RUNTIME</span> QT · Healthcare</div>
+          <h3 class="win-headline"><em>8 hours</em> of monthly close, compressed into <em>~2</em>.</h3>
+          <p class="win-body">Refactored Synapse ingest to watermark-based incremental loads, tuned distribution and indexes, and gave clinical ops same-morning reports for the first time.</p>
+          <div class="win-query">
+            <span class="ok">✓</span> close cycle: <span class="num">8h → 2h</span><span class="sep">·</span>tables: <span class="num">280+</span>
+          </div>
+        </div>
+        <div class="win">
+          <div class="win-meta"><span class="tag">ANALYST UX</span> CGI · Banking</div>
+          <h3 class="win-headline">An <em>NL → SQL</em> assistant analysts actually use.</h3>
+          <p class="win-body">Built a GPT-4-powered Snowflake query helper with schema injection and few-shot grounding. Ad-hoc lookups went from "open a ticket" to a sentence.</p>
+          <div class="win-query">
+            <span class="ok">✓</span> tickets: <span class="num">-40/wk</span><span class="sep">·</span>turnaround: <span class="num">hrs → min</span>
+          </div>
+        </div>
+        <div class="win">
+          <div class="win-meta"><span class="tag">ONBOARDING</span> Hexagon · Retail</div>
+          <h3 class="win-headline">New source integration: <em>3 weeks → 4 days</em>.</h3>
+          <p class="win-body">Replaced bespoke Glue jobs with metadata-driven templates wired to a DynamoDB control table. Onboarding became a config change, not a sprint.</p>
+          <div class="win-query">
+            <span class="ok">✓</span> onboarding: <span class="num">21d → 4d</span><span class="sep">·</span>LOC: <span class="num">~0 new</span>
+          </div>
+        </div>
+        <div class="win">
+          <div class="win-meta"><span class="tag">QUERY PERF</span> Hexagon · Retail</div>
+          <h3 class="win-headline">Dashboard p95: <em>25s → under 5s</em>.</h3>
+          <p class="win-body">Repartitioned Redshift fact tables, rebuilt sort + distribution keys, and gave merchandising leaders a weekly view that actually loads.</p>
+          <div class="win-query">
+            <span class="ok">✓</span> p95: <span class="num">25s → 4.8s</span><span class="sep">·</span>scan: <span class="num">-6×</span>
+          </div>
+        </div>
+        <div class="win">
+          <div class="win-meta"><span class="tag">GOVERNANCE</span> QT · Healthcare</div>
+          <h3 class="win-headline">Auditable PHI lineage <em>without the spreadsheet</em>.</h3>
+          <p class="win-body">Tagged 110+ tables in Purview with PHI classification, glossary terms, and column-level lineage — compliance reviews stopped needing manual mapping.</p>
+          <div class="win-query">
+            <span class="ok">✓</span> tagged: <span class="num">110+</span><span class="sep">·</span>audit prep: <span class="num">-1 wk</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- ======================= ARCHITECTURE ======================= -->
-<section class="block" id="architecture">
+<!-- ======================= PLATFORM (toolkit + reference architecture) ======================= -->
+<section class="block" id="stack">
   <div class="container">
     <div class="section-head">
       <div class="section-label">
-        <svg><use href="#i-connector"/></svg> § 03 / Reference Architecture
+        <svg><use href="#i-terminal"/></svg> § 03 / Tools and Architecture
       </div>
-      <h2 class="section-title">A pattern I keep <em>coming back to</em>.</h2>
+      <h2 class="section-title">The tools I reach for, and the <em>pattern I keep coming back to</em>.</h2>
     </div>
 
-    <!-- MOBILE -->
-    <div class="arch-mobile">
+    <!-- Sub-block: Stack / Toolkit -->
+    <div class="platform-block">
+      <div class="platform-sub-head">
+        <div class="platform-sub-label">
+          <svg><use href="#i-terminal"/></svg> // Stack &amp; Toolkit
+        </div>
+        <h3 class="platform-sub-title">My toolkit. <em>Type a command</em> or filter below.</h3>
+      </div>
+
+      <div class="stack-terminal">
+        <div class="terminal-bar">
+          <span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span>
+          <span class="term-path">jashwanth@platform ~ % stack.sh</span>
+        </div>
+
+        <div class="terminal-body" id="terminal-body">
+          <div class="terminal-line">
+            <span class="prompt">$</span><span class="cmd">stack --describe</span>
+          </div>
+          <div class="terminal-output">{
+  <span class="key">"name"</span>: <span class="str">"Jashwanth Reddy Earla"</span>,
+  <span class="key">"role"</span>: <span class="str">"Senior Data Engineer"</span>,
+  <span class="key">"clouds"</span>: [<span class="str">"Azure"</span>, <span class="str">"AWS"</span>],
+  <span class="key">"warehouses"</span>: [<span class="str">"Snowflake"</span>, <span class="str">"Synapse"</span>, <span class="str">"Redshift"</span>],
+  <span class="key">"approach"</span>: <span class="str">"idempotent · documented · monitored"</span>
+}</div>
+          <div class="terminal-line">
+            <span class="prompt">$</span><span class="cmd">help</span>
+          </div>
+          <div class="terminal-output"><span class="hint">Available commands:</span>
+  <span class="ok">help</span>      <span class="hint">show this menu</span>
+  <span class="ok">about</span>     <span class="hint">background and focus</span>
+  <span class="ok">skills</span>    <span class="hint">list technical stack</span>
+  <span class="ok">contact</span>   <span class="hint">socials and email</span>
+  <span class="ok">whoami</span>    <span class="hint">current identity</span>
+  <span class="ok">clear</span>     <span class="hint">clear the terminal</span>
+<span class="hint">Hint: try the filter chips below ↓</span></div>
+        </div>
+
+        <div class="terminal-input-row">
+          <span class="prompt">$</span>
+          <input type="text" class="terminal-input" id="terminal-input" placeholder="type a command and hit enter..." autocomplete="off" spellcheck="false" />
+        </div>
+
+        <div class="stack-filters" id="stack-filters">
+          <button class="stack-filter active" data-cat="all"><svg><use href="#i-filter"/></svg> all</button>
+          <button class="stack-filter" data-cat="cloud"><svg><use href="#i-cloud"/></svg> cloud</button>
+          <button class="stack-filter" data-cat="warehouse"><svg><use href="#i-database"/></svg> warehouse</button>
+          <button class="stack-filter" data-cat="pipelines"><svg><use href="#i-pipeline"/></svg> pipelines</button>
+          <button class="stack-filter" data-cat="streaming"><svg><use href="#i-stream"/></svg> streaming</button>
+          <button class="stack-filter" data-cat="quality"><svg><use href="#i-shield"/></svg> quality</button>
+          <button class="stack-filter" data-cat="devops"><svg><use href="#i-gear"/></svg> devops</button>
+          <button class="stack-filter" data-cat="languages"><svg><use href="#i-code"/></svg> lang</button>
+          <button class="stack-filter" data-cat="ai"><svg><use href="#i-zap"/></svg> AI/LLM</button>
+        </div>
+
+        <div class="stack-display" id="stack-display"></div>
+      </div>
+    </div>
+
+    <!-- Sub-block: Reference Architecture -->
+    <div class="platform-block" id="architecture">
+      <div class="platform-sub-head">
+        <div class="platform-sub-label">
+          <svg><use href="#i-connector"/></svg> // Reference Architecture
+        </div>
+        <h3 class="platform-sub-title">A pattern I keep <em>coming back to</em>.</h3>
+      </div>
+
+      <!-- MOBILE -->
+      <div class="arch-mobile">
       <div class="arch-tier" data-arch="0">
         <div class="arch-tier-head">
           <div class="arch-tier-icon" style="color: var(--text-mute)"><svg><use href="#i-cloud"/></svg></div>
@@ -2239,131 +2461,8 @@ footer.contact {
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ======================= STACK (interactive terminal + filters) ======================= -->
-<section class="block" id="stack">
-  <div class="container">
-    <div class="section-head">
-      <div class="section-label">
-        <svg><use href="#i-terminal"/></svg> § 04 / Stack
-      </div>
-      <h2 class="section-title">My toolkit. <em>Type a command</em> or filter below.</h2>
     </div>
 
-    <div class="stack-terminal">
-      <div class="terminal-bar">
-        <span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span>
-        <span class="term-path">jashwanth@platform ~ % stack.sh</span>
-      </div>
-
-      <div class="terminal-body" id="terminal-body">
-        <div class="terminal-line">
-          <span class="prompt">$</span><span class="cmd">stack --describe</span>
-        </div>
-        <div class="terminal-output">{
-  <span class="key">"name"</span>: <span class="str">"Jashwanth Reddy Earla"</span>,
-  <span class="key">"role"</span>: <span class="str">"Senior Data Engineer"</span>,
-  <span class="key">"clouds"</span>: [<span class="str">"Azure"</span>, <span class="str">"AWS"</span>],
-  <span class="key">"warehouses"</span>: [<span class="str">"Snowflake"</span>, <span class="str">"Synapse"</span>, <span class="str">"Redshift"</span>],
-  <span class="key">"approach"</span>: <span class="str">"idempotent · documented · monitored"</span>
-}</div>
-        <div class="terminal-line">
-          <span class="prompt">$</span><span class="cmd">help</span>
-        </div>
-        <div class="terminal-output"><span class="hint">Available commands:</span>
-  <span class="ok">help</span>      <span class="hint">show this menu</span>
-  <span class="ok">about</span>     <span class="hint">background and focus</span>
-  <span class="ok">skills</span>    <span class="hint">list technical stack</span>
-  <span class="ok">contact</span>   <span class="hint">socials and email</span>
-  <span class="ok">whoami</span>    <span class="hint">current identity</span>
-  <span class="ok">clear</span>     <span class="hint">clear the terminal</span>
-<span class="hint">Hint: try the filter chips below ↓</span></div>
-      </div>
-
-      <div class="terminal-input-row">
-        <span class="prompt">$</span>
-        <input type="text" class="terminal-input" id="terminal-input" placeholder="type a command and hit enter..." autocomplete="off" spellcheck="false" />
-      </div>
-
-      <div class="stack-filters" id="stack-filters">
-        <button class="stack-filter active" data-cat="all"><svg><use href="#i-filter"/></svg> all</button>
-        <button class="stack-filter" data-cat="cloud"><svg><use href="#i-cloud"/></svg> cloud</button>
-        <button class="stack-filter" data-cat="warehouse"><svg><use href="#i-database"/></svg> warehouse</button>
-        <button class="stack-filter" data-cat="pipelines"><svg><use href="#i-pipeline"/></svg> pipelines</button>
-        <button class="stack-filter" data-cat="streaming"><svg><use href="#i-stream"/></svg> streaming</button>
-        <button class="stack-filter" data-cat="quality"><svg><use href="#i-shield"/></svg> quality</button>
-        <button class="stack-filter" data-cat="devops"><svg><use href="#i-gear"/></svg> devops</button>
-        <button class="stack-filter" data-cat="languages"><svg><use href="#i-code"/></svg> lang</button>
-        <button class="stack-filter" data-cat="ai"><svg><use href="#i-zap"/></svg> AI/LLM</button>
-      </div>
-
-      <div class="stack-display" id="stack-display"></div>
-    </div>
-  </div>
-</section>
-
-<!-- ======================= WINS ======================= -->
-<section class="block" id="work">
-  <div class="container">
-    <div class="section-head">
-      <div class="section-label">
-        <svg><use href="#i-chart"/></svg> § 05 / Selected wins
-      </div>
-      <h2 class="section-title">Specific problems, <em>specific outcomes</em>.</h2>
-    </div>
-
-    <div class="wins-grid">
-      <div class="win">
-        <div class="win-meta"><span class="tag">LATENCY</span> CGI · Banking</div>
-        <h3 class="win-headline">From <em>T+1 batch</em> to event-to-alert in <em>under 8 seconds</em>.</h3>
-        <p class="win-body">Replaced an overnight fraud-scoring job with a Lambda speed layer on Event Hub + Databricks Structured Streaming. Diagnosed partition skew with salted keys to keep p99 stable.</p>
-        <div class="win-query">
-          <span class="ok">✓</span> latency p99: <span class="num">7.4s</span><span class="sep">·</span>throughput: <span class="num">2.1M/hr</span>
-        </div>
-      </div>
-      <div class="win">
-        <div class="win-meta"><span class="tag">RUNTIME</span> QT · Healthcare</div>
-        <h3 class="win-headline"><em>8 hours</em> of monthly close, compressed into <em>~2</em>.</h3>
-        <p class="win-body">Refactored Synapse ingest to watermark-based incremental loads, tuned distribution and indexes, and gave clinical ops same-morning reports for the first time.</p>
-        <div class="win-query">
-          <span class="ok">✓</span> close cycle: <span class="num">8h → 2h</span><span class="sep">·</span>tables: <span class="num">280+</span>
-        </div>
-      </div>
-      <div class="win">
-        <div class="win-meta"><span class="tag">ANALYST UX</span> CGI · Banking</div>
-        <h3 class="win-headline">An <em>NL → SQL</em> assistant analysts actually use.</h3>
-        <p class="win-body">Built a GPT-4-powered Snowflake query helper with schema injection and few-shot grounding. Ad-hoc lookups went from "open a ticket" to a sentence.</p>
-        <div class="win-query">
-          <span class="ok">✓</span> tickets: <span class="num">-40/wk</span><span class="sep">·</span>turnaround: <span class="num">hrs → min</span>
-        </div>
-      </div>
-      <div class="win">
-        <div class="win-meta"><span class="tag">ONBOARDING</span> Hexagon · Retail</div>
-        <h3 class="win-headline">New source integration: <em>3 weeks → 4 days</em>.</h3>
-        <p class="win-body">Replaced bespoke Glue jobs with metadata-driven templates wired to a DynamoDB control table. Onboarding became a config change, not a sprint.</p>
-        <div class="win-query">
-          <span class="ok">✓</span> onboarding: <span class="num">21d → 4d</span><span class="sep">·</span>LOC: <span class="num">~0 new</span>
-        </div>
-      </div>
-      <div class="win">
-        <div class="win-meta"><span class="tag">QUERY PERF</span> Hexagon · Retail</div>
-        <h3 class="win-headline">Dashboard p95: <em>25s → under 5s</em>.</h3>
-        <p class="win-body">Repartitioned Redshift fact tables, rebuilt sort + distribution keys, and gave merchandising leaders a weekly view that actually loads.</p>
-        <div class="win-query">
-          <span class="ok">✓</span> p95: <span class="num">25s → 4.8s</span><span class="sep">·</span>scan: <span class="num">-6×</span>
-        </div>
-      </div>
-      <div class="win">
-        <div class="win-meta"><span class="tag">GOVERNANCE</span> QT · Healthcare</div>
-        <h3 class="win-headline">Auditable PHI lineage <em>without the spreadsheet</em>.</h3>
-        <p class="win-body">Tagged 110+ tables in Purview with PHI classification, glossary terms, and column-level lineage — compliance reviews stopped needing manual mapping.</p>
-        <div class="win-query">
-          <span class="ok">✓</span> tagged: <span class="num">110+</span><span class="sep">·</span>audit prep: <span class="num">-1 wk</span>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -2372,12 +2471,93 @@ footer.contact {
   <div class="container">
     <div class="section-head">
       <div class="section-label">
-        <svg><use href="#i-cpu"/></svg> § 06 / Featured Projects
+        <svg><use href="#i-cpu"/></svg> § 04 / Featured Projects
       </div>
       <h2 class="section-title">Two live pipelines I shipped <em>solo, end-to-end</em>.</h2>
     </div>
 
-    <!-- Project header card -->
+    <!-- ============== Crypto Sentinel · primary project ============== -->
+    <div class="proj-card">
+      <div class="proj-card-head">
+        <div class="proj-title-block">
+          <div class="proj-meta">
+            <span class="proj-pulse"></span>
+            <span>LIVE · Azure Serverless · Open Source</span>
+          </div>
+          <h3 class="proj-title">Crypto Sentinel — AI Sentiment <em>Pipeline</em></h3>
+          <p class="proj-sub">CoinGecko + CryptoPanic → 6-signal weighted scoring → daily BUY / WATCH / AVOID picks</p>
+        </div>
+        <div class="proj-cta-stack">
+          <a href="https://crypto-sentinel-dashboard.vercel.app/" target="_blank" rel="noopener noreferrer" class="proj-cta proj-cta-primary">
+            <span class="proj-cta-pulse"></span>
+            Live Dashboard
+            <svg><use href="#i-arrow-up-right"/></svg>
+          </a>
+          <a href="https://github.com/JashwanthReddyE/crypto-sentinel" target="_blank" rel="noopener noreferrer" class="proj-cta">
+            View on GitHub
+            <svg><use href="#i-arrow-up-right"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="proj-card-body">
+        <p class="proj-prose">
+          An <strong>Azure Functions</strong> pipeline that scores 24 crypto assets on a daily cadence
+          and ranks them BUY / WATCH / AVOID. A timer-triggered function pulls live prices, market caps,
+          and trending lists from <strong>CoinGecko</strong>, plus headline sentiment from
+          <strong>CryptoPanic</strong>'s public feed. The scoring engine blends six signals — news
+          sentiment, three momentum windows, volume ratio, trending bonus — into a single 0–100 score,
+          exposed through two HTTP endpoints and a <em>self-contained Vercel dashboard</em>. The whole
+          thing runs at <strong>~$0.03/month</strong> on Consumption + LRS storage.
+        </p>
+        <div class="stack-row">
+          <span class="stack-pill">Azure Functions v4</span>
+          <span class="stack-pill">Python 3.11</span>
+          <span class="stack-pill">CoinGecko</span>
+          <span class="stack-pill">CryptoPanic</span>
+          <span class="stack-pill">Timer Trigger</span>
+          <span class="stack-pill">HTTP Trigger</span>
+          <span class="stack-pill">LRS Storage</span>
+          <span class="stack-pill">Vercel</span>
+          <span class="stack-pill">pytest · 144 tests</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Architecture diagram -->
+    <div class="proj-section">
+      <div class="proj-section-title">Architecture</div>
+      <img src="assets/crypto-sentinel-architecture.svg" alt="Crypto Sentinel pipeline architecture" class="proj-arch-img" loading="lazy" />
+    </div>
+
+    <!-- Scoring engine -->
+    <div class="proj-section">
+      <div class="proj-section-title">Scoring engine · 6 signals → 0–100 → BUY / WATCH / AVOID</div>
+      <img src="assets/crypto-sentinel-scoring.svg" alt="Crypto Sentinel scoring engine breakdown" class="proj-arch-img" loading="lazy" />
+    </div>
+
+    <!-- Engineering decisions -->
+    <div class="proj-section">
+      <div class="proj-section-title">Decisions under constraint</div>
+      <div class="proj-decisions-grid">
+        <article class="proj-decision">
+          <span class="proj-decision-tag">SIGNAL WEIGHT</span>
+          <h4 class="proj-decision-head">News sentiment capped at <em>30%</em>.</h4>
+          <p class="proj-decision-body">Letting NLP dominate the score would over-react to a single bullish headline. Combining sentiment with three momentum windows (24h / 7d / 30d) plus volume ratio and a trending bonus smooths the picks against single-source manipulation.</p>
+        </article>
+        <article class="proj-decision">
+          <span class="proj-decision-tag">COST CEILING</span>
+          <h4 class="proj-decision-head">Whole pipeline at <em>~$0.03/month</em>.</h4>
+          <p class="proj-decision-body">Picked Consumption plan + LRS storage instead of always-on App Service. A daily timer plus on-demand HTTP fits comfortably inside the Functions free grant; the only billable resource is a few KB of state in storage.</p>
+        </article>
+        <article class="proj-decision">
+          <span class="proj-decision-tag">OFFLINE MODE</span>
+          <h4 class="proj-decision-head">Every endpoint takes <em>test_data=true</em>.</h4>
+          <p class="proj-decision-body">A flag swaps live API calls for canned JSON in <code>tests/</code>. CI runs all 144 pytest cases hermetically without burning the CoinGecko demo key, and reviewers can demo the dashboard offline.</p>
+        </article>
+      </div>
+    </div>
+
+    <!-- ============== Stock Sentiment · second project ============== -->
     <div class="proj-card">
       <div class="proj-card-head">
         <div class="proj-title-block">
@@ -2468,80 +2648,6 @@ footer.contact {
       </div>
     </div>
 
-    <!-- ============== Crypto Sentinel · second project ============== -->
-    <div class="proj-card">
-      <div class="proj-card-head">
-        <div class="proj-title-block">
-          <div class="proj-meta">
-            <span class="proj-pulse"></span>
-            <span>LIVE · Azure Serverless · Open Source</span>
-          </div>
-          <h3 class="proj-title">Crypto Sentinel — AI Sentiment <em>Pipeline</em></h3>
-          <p class="proj-sub">CoinGecko + CryptoPanic → 6-signal weighted scoring → daily BUY / WATCH / AVOID picks</p>
-        </div>
-        <a href="https://github.com/JashwanthReddyE/crypto-sentinel" target="_blank" rel="noopener noreferrer" class="proj-cta">
-          View on GitHub
-          <svg><use href="#i-arrow-up-right"/></svg>
-        </a>
-      </div>
-      <div class="proj-card-body">
-        <p class="proj-prose">
-          An <strong>Azure Functions</strong> pipeline that scores 24 crypto assets on a daily cadence
-          and ranks them BUY / WATCH / AVOID. A timer-triggered function pulls live prices, market caps,
-          and trending lists from <strong>CoinGecko</strong>, plus headline sentiment from
-          <strong>CryptoPanic</strong>'s public feed. The scoring engine blends six signals — news
-          sentiment, three momentum windows, volume ratio, trending bonus — into a single 0–100 score,
-          exposed through two HTTP endpoints and a <em>self-contained Vercel dashboard</em>. The whole
-          thing runs at <strong>~$0.03/month</strong> on Consumption + LRS storage.
-        </p>
-        <div class="stack-row">
-          <span class="stack-pill">Azure Functions v4</span>
-          <span class="stack-pill">Python 3.11</span>
-          <span class="stack-pill">CoinGecko</span>
-          <span class="stack-pill">CryptoPanic</span>
-          <span class="stack-pill">Timer Trigger</span>
-          <span class="stack-pill">HTTP Trigger</span>
-          <span class="stack-pill">LRS Storage</span>
-          <span class="stack-pill">Vercel</span>
-          <span class="stack-pill">pytest · 144 tests</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Architecture diagram -->
-    <div class="proj-section">
-      <div class="proj-section-title">Architecture</div>
-      <img src="assets/crypto-sentinel-architecture.svg" alt="Crypto Sentinel pipeline architecture" class="proj-arch-img" loading="lazy" />
-    </div>
-
-    <!-- Scoring engine -->
-    <div class="proj-section">
-      <div class="proj-section-title">Scoring engine · 6 signals → 0–100 → BUY / WATCH / AVOID</div>
-      <img src="assets/crypto-sentinel-scoring.svg" alt="Crypto Sentinel scoring engine breakdown" class="proj-arch-img" loading="lazy" />
-    </div>
-
-    <!-- Engineering decisions -->
-    <div class="proj-section">
-      <div class="proj-section-title">Decisions under constraint</div>
-      <div class="proj-decisions-grid">
-        <article class="proj-decision">
-          <span class="proj-decision-tag">SIGNAL WEIGHT</span>
-          <h4 class="proj-decision-head">News sentiment capped at <em>30%</em>.</h4>
-          <p class="proj-decision-body">Letting NLP dominate the score would over-react to a single bullish headline. Combining sentiment with three momentum windows (24h / 7d / 30d) plus volume ratio and a trending bonus smooths the picks against single-source manipulation.</p>
-        </article>
-        <article class="proj-decision">
-          <span class="proj-decision-tag">COST CEILING</span>
-          <h4 class="proj-decision-head">Whole pipeline at <em>~$0.03/month</em>.</h4>
-          <p class="proj-decision-body">Picked Consumption plan + LRS storage instead of always-on App Service. A daily timer plus on-demand HTTP fits comfortably inside the Functions free grant; the only billable resource is a few KB of state in storage.</p>
-        </article>
-        <article class="proj-decision">
-          <span class="proj-decision-tag">OFFLINE MODE</span>
-          <h4 class="proj-decision-head">Every endpoint takes <em>test_data=true</em>.</h4>
-          <p class="proj-decision-body">A flag swaps live API calls for canned JSON in <code>tests/</code>. CI runs all 144 pytest cases hermetically without burning the CoinGecko demo key, and reviewers can demo the dashboard offline.</p>
-        </article>
-      </div>
-    </div>
-
   </div>
 </section>
 
@@ -2551,7 +2657,7 @@ footer.contact {
 
     <div class="section-head">
       <div class="section-label">
-        <svg><use href="#i-connector"/></svg> § 07 / Connect
+        <svg><use href="#i-connector"/></svg> § 05 / Connect
       </div>
       <h2 class="section-title">Got a <em>data problem</em>? Let's talk.</h2>
     </div>
@@ -2664,40 +2770,21 @@ function showToast(msg) {
 (() => {
   const target = $('#typed');
   if (!target) return;
-  const phrases = [
-    "I architect streaming lakehouses,",
-    "untangle legacy ETL,",
-    "and ship pipelines that don't wake people up at 3am."
-  ];
-  let pi = 0, ci = 0, deleting = false;
-  let buffer = '';
+  const fullText = "I architect streaming lakehouses, untangle legacy ETL, and ship pipelines that don't wake people up at 3am.";
+  let ci = 0;
 
   function tick() {
-    const phrase = phrases[pi];
-    if (!deleting) {
-      buffer = phrase.slice(0, ci + 1);
-      ci++;
-      target.textContent = buffer;
-      if (ci === phrase.length) {
-        // hold full phrase
-        if (pi === phrases.length - 1) return; // stop at last phrase
-        setTimeout(() => { deleting = true; tick(); }, 1600);
-        return;
-      }
-      setTimeout(tick, 28 + Math.random() * 35);
-    } else {
-      buffer = phrase.slice(0, ci - 1);
-      ci--;
-      target.textContent = buffer;
-      if (ci === 0) {
-        deleting = false;
-        pi = (pi + 1) % phrases.length;
-      }
-      setTimeout(tick, 14);
-    }
+    if (ci >= fullText.length) return;
+    ci++;
+    target.textContent = fullText.slice(0, ci);
+    const prev = fullText[ci - 1];
+    let delay = 28 + Math.random() * 35;
+    if (prev === ',') delay = 320;
+    else if (prev === '.') delay = 500;
+    setTimeout(tick, delay);
   }
   if (isReduced()) {
-    target.textContent = phrases.join(' ');
+    target.textContent = fullText;
   } else {
     setTimeout(tick, 600);
   }
