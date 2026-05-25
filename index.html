@@ -1662,7 +1662,7 @@ footer.contact {
       <a href="#experience" data-target="experience"><svg><use href="#i-pipeline"/></svg> Pipeline</a>
       <a href="#stack" data-target="stack"><svg><use href="#i-terminal"/></svg> Stack</a>
       <a href="#work" data-target="work"><svg><use href="#i-chart"/></svg> Work</a>
-      <a href="#project" data-target="project"><svg><use href="#i-cpu"/></svg> Project</a>
+      <a href="#project" data-target="project"><svg><use href="#i-cpu"/></svg> Projects</a>
       <a href="#contact" data-target="contact"><svg><use href="#i-connector"/></svg> Connect</a>
     </div>
 
@@ -2372,9 +2372,9 @@ footer.contact {
   <div class="container">
     <div class="section-head">
       <div class="section-label">
-        <svg><use href="#i-cpu"/></svg> § 06 / Featured Project
+        <svg><use href="#i-cpu"/></svg> § 06 / Featured Projects
       </div>
-      <h2 class="section-title">A live AWS pipeline I shipped <em>solo, end-to-end</em>.</h2>
+      <h2 class="section-title">Two live pipelines I shipped <em>solo, end-to-end</em>.</h2>
     </div>
 
     <!-- Project header card -->
@@ -2465,6 +2465,80 @@ footer.contact {
           <img src="assets/stock-sentiment-brief.png" alt="AI Forecast & Brief tab" loading="lazy" />
           <figcaption>③ AI Forecast + Claude Haiku market brief</figcaption>
         </figure>
+      </div>
+    </div>
+
+    <!-- ============== Crypto Sentinel · second project ============== -->
+    <div class="proj-card">
+      <div class="proj-card-head">
+        <div class="proj-title-block">
+          <div class="proj-meta">
+            <span class="proj-pulse"></span>
+            <span>LIVE · Azure Serverless · Open Source</span>
+          </div>
+          <h3 class="proj-title">Crypto Sentinel — AI Sentiment <em>Pipeline</em></h3>
+          <p class="proj-sub">CoinGecko + CryptoPanic → 6-signal weighted scoring → daily BUY / WATCH / AVOID picks</p>
+        </div>
+        <a href="https://github.com/JashwanthReddyE/crypto-sentinel" target="_blank" rel="noopener noreferrer" class="proj-cta">
+          View on GitHub
+          <svg><use href="#i-arrow-up-right"/></svg>
+        </a>
+      </div>
+      <div class="proj-card-body">
+        <p class="proj-prose">
+          An <strong>Azure Functions</strong> pipeline that scores 24 crypto assets on a daily cadence
+          and ranks them BUY / WATCH / AVOID. A timer-triggered function pulls live prices, market caps,
+          and trending lists from <strong>CoinGecko</strong>, plus headline sentiment from
+          <strong>CryptoPanic</strong>'s public feed. The scoring engine blends six signals — news
+          sentiment, three momentum windows, volume ratio, trending bonus — into a single 0–100 score,
+          exposed through two HTTP endpoints and a <em>self-contained Vercel dashboard</em>. The whole
+          thing runs at <strong>~$0.03/month</strong> on Consumption + LRS storage.
+        </p>
+        <div class="stack-row">
+          <span class="stack-pill">Azure Functions v4</span>
+          <span class="stack-pill">Python 3.11</span>
+          <span class="stack-pill">CoinGecko</span>
+          <span class="stack-pill">CryptoPanic</span>
+          <span class="stack-pill">Timer Trigger</span>
+          <span class="stack-pill">HTTP Trigger</span>
+          <span class="stack-pill">LRS Storage</span>
+          <span class="stack-pill">Vercel</span>
+          <span class="stack-pill">pytest · 144 tests</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Architecture diagram -->
+    <div class="proj-section">
+      <div class="proj-section-title">Architecture</div>
+      <img src="assets/crypto-sentinel-architecture.svg" alt="Crypto Sentinel pipeline architecture" class="proj-arch-img" loading="lazy" />
+    </div>
+
+    <!-- Scoring engine -->
+    <div class="proj-section">
+      <div class="proj-section-title">Scoring engine · 6 signals → 0–100 → BUY / WATCH / AVOID</div>
+      <img src="assets/crypto-sentinel-scoring.svg" alt="Crypto Sentinel scoring engine breakdown" class="proj-arch-img" loading="lazy" />
+    </div>
+
+    <!-- Engineering decisions -->
+    <div class="proj-section">
+      <div class="proj-section-title">Decisions under constraint</div>
+      <div class="proj-decisions-grid">
+        <article class="proj-decision">
+          <span class="proj-decision-tag">SIGNAL WEIGHT</span>
+          <h4 class="proj-decision-head">News sentiment capped at <em>30%</em>.</h4>
+          <p class="proj-decision-body">Letting NLP dominate the score would over-react to a single bullish headline. Combining sentiment with three momentum windows (24h / 7d / 30d) plus volume ratio and a trending bonus smooths the picks against single-source manipulation.</p>
+        </article>
+        <article class="proj-decision">
+          <span class="proj-decision-tag">COST CEILING</span>
+          <h4 class="proj-decision-head">Whole pipeline at <em>~$0.03/month</em>.</h4>
+          <p class="proj-decision-body">Picked Consumption plan + LRS storage instead of always-on App Service. A daily timer plus on-demand HTTP fits comfortably inside the Functions free grant; the only billable resource is a few KB of state in storage.</p>
+        </article>
+        <article class="proj-decision">
+          <span class="proj-decision-tag">OFFLINE MODE</span>
+          <h4 class="proj-decision-head">Every endpoint takes <em>test_data=true</em>.</h4>
+          <p class="proj-decision-body">A flag swaps live API calls for canned JSON in <code>tests/</code>. CI runs all 144 pytest cases hermetically without burning the CoinGecko demo key, and reviewers can demo the dashboard offline.</p>
+        </article>
       </div>
     </div>
 
