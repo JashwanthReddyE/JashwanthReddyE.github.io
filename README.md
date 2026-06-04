@@ -15,7 +15,7 @@ A single-page, dark-themed portfolio designed around the idea that *compliance, 
 | 03 | **Reference Architecture** | The Lambda-style streaming + batch pattern I default to — Event Hub / Kafka → Databricks Structured Streaming → medallion lakehouse → Snowflake / Synapse / Redshift. |
 | 04 | **Toolkit** | Filterable, terminal-style command palette of the stack I work in. |
 | 05 | **Wins with numbers** | T+1 batch → sub-8-second event-to-alert · 8h → 2h monthly close · NL → SQL assistant for risk analysts · new-source onboarding 3 weeks → 4 days · dashboard p95 25s → <5s · audit-ready PHI lineage. |
-| 06 | **Featured Project** | [`aws-stock-sentiment-pipeline`](https://github.com/JashwanthReddyE/aws-stock-sentiment-pipeline) — architecture diagram, design decisions, and screenshots of the Streamlit dashboard (Live Prices · Sentiment Heatmap · AI Forecast & Brief). |
+| 06 | **Featured Projects** | [`AISLakehouse`](https://github.com/JashwanthReddyE/AISLakehouse) — real-time maritime medallion lakehouse (AISStream → Event Hubs → Databricks + ADLS Gen2 → dark-vessel analytics, [live](https://aislakehouse.vercel.app)) · [`crypto-sentinel`](https://github.com/JashwanthReddyE/crypto-sentinel) — Azure Functions AI sentiment pipeline ([live](https://crypto-sentinel-dashboard.vercel.app)) · [`aws-stock-sentiment-pipeline`](https://github.com/JashwanthReddyE/aws-stock-sentiment-pipeline) — AWS Lambda + Bedrock + Streamlit. Each with architecture diagram and design decisions. |
 | 07 | **Contact** | LinkedIn · email. |
 
 ---

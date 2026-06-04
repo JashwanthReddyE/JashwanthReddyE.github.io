@@ -2473,7 +2473,91 @@ footer.contact {
       <div class="section-label">
         <svg><use href="#i-cpu"/></svg> § 04 / Featured Projects
       </div>
-      <h2 class="section-title">Two live pipelines I shipped <em>solo, end-to-end</em>.</h2>
+      <h2 class="section-title">Three live pipelines I shipped <em>solo, end-to-end</em>.</h2>
+    </div>
+
+    <!-- ============== AISLakehouse · primary project ============== -->
+    <div class="proj-card">
+      <div class="proj-card-head">
+        <div class="proj-title-block">
+          <div class="proj-meta">
+            <span class="proj-pulse"></span>
+            <span>LIVE · Azure + Databricks · Real-Time Streaming · Open Source</span>
+          </div>
+          <h3 class="proj-title">AISLakehouse — Real-Time Maritime <em>Lakehouse</em></h3>
+          <p class="proj-sub">Live AIS WebSocket → Event Hubs → Medallion lakehouse (Databricks + ADLS Gen2) → dark-vessel analytics</p>
+        </div>
+        <div class="proj-cta-stack">
+          <a href="https://aislakehouse.vercel.app/" target="_blank" rel="noopener noreferrer" class="proj-cta proj-cta-primary">
+            <span class="proj-cta-pulse"></span>
+            Live Dashboard
+            <svg><use href="#i-arrow-up-right"/></svg>
+          </a>
+          <a href="https://github.com/JashwanthReddyE/AISLakehouse" target="_blank" rel="noopener noreferrer" class="proj-cta">
+            View on GitHub
+            <svg><use href="#i-arrow-up-right"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="proj-card-body">
+        <p class="proj-prose">
+          A <strong>real-time streaming lakehouse</strong> that reads a live global ship-position feed
+          (<strong>AISStream.io</strong>) over a persistent WebSocket and turns vessel movement into
+          behavior analytics — not just "dots on a map." An always-on <strong>Azure Container Apps</strong>
+          consumer (asyncio, reconnect-with-backoff, idle heartbeat) publishes raw frames to
+          <strong>Event Hubs</strong> (Kafka, partitioned by MMSI). <strong>Databricks Structured
+          Streaming</strong> then builds a <em>Medallion</em> lakehouse on <strong>ADLS Gen2</strong>:
+          <strong>Bronze</strong> (raw, immutable, exactly-once via checkpoint + Delta) →
+          <strong>Silver</strong> (parse, watermarked dedup on <code>(MMSI, event_time)</code>, MMSI→flag
+          enrichment, destination normalization, DQ quarantine) → <strong>Gold</strong> (dark-vessel
+          detection and a tanker-flow / floating-storage commodity indicator). A scheduled GitHub Action
+          re-runs the whole pipeline hourly and redeploys a self-contained, glassmorphism
+          <em>Vercel dashboard</em>.
+        </p>
+        <div class="stack-row">
+          <span class="stack-pill">Azure Event Hubs</span>
+          <span class="stack-pill">Databricks</span>
+          <span class="stack-pill">Spark Structured Streaming</span>
+          <span class="stack-pill">Delta Lake</span>
+          <span class="stack-pill">ADLS Gen2</span>
+          <span class="stack-pill">Unity Catalog</span>
+          <span class="stack-pill">Container Apps</span>
+          <span class="stack-pill">Bicep IaC</span>
+          <span class="stack-pill">asyncio + WebSockets</span>
+          <span class="stack-pill">Python 3.11</span>
+          <span class="stack-pill">Vercel</span>
+          <span class="stack-pill">GitHub Actions</span>
+          <span class="stack-pill">pytest · 86 tests</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Architecture diagram -->
+    <div class="proj-section">
+      <div class="proj-section-title">Architecture · AISStream → Event Hubs → Bronze / Silver / Gold → Vercel</div>
+      <img src="assets/aislakehouse-architecture.svg" alt="AISLakehouse real-time medallion lakehouse architecture" class="proj-arch-img" loading="lazy" />
+    </div>
+
+    <!-- Engineering decisions -->
+    <div class="proj-section">
+      <div class="proj-section-title">Decisions under constraint</div>
+      <div class="proj-decisions-grid">
+        <article class="proj-decision">
+          <span class="proj-decision-tag">EXACTLY-ONCE</span>
+          <h4 class="proj-decision-head">Producer is <em>at-least-once</em>; bronze isn't.</h4>
+          <p class="proj-decision-body">The Event Hubs producer only guarantees at-least-once, so duplicates are inevitable on retry. Idempotency is pushed downstream: Spark checkpointing plus Delta transactional writes make the bronze load exactly-once, and Silver adds watermarked dedup on <code>(MMSI, event_time)</code>. Bronze stays raw and immutable as the replay/audit anchor.</p>
+        </article>
+        <article class="proj-decision">
+          <span class="proj-decision-tag">SERVERLESS AUTH</span>
+          <h4 class="proj-decision-head">Serverless <em>forbids</em> the storage-key conf.</h4>
+          <p class="proj-decision-body">Databricks serverless blocks <code>fs.azure.account.key</code> (CONFIG_NOT_AVAILABLE), so the tutorial path fails. Switched to a Unity Catalog external location backed by a service-principal storage credential — the production-faithful way to reach ADLS Gen2 without leaking keys into Spark conf.</p>
+        </article>
+        <article class="proj-decision">
+          <span class="proj-decision-tag">HONEST SIGNAL</span>
+          <h4 class="proj-decision-head">A dark event is a <em>candidate</em>, not proof.</h4>
+          <p class="proj-decision-body">Terrestrial AIS has genuine coverage dead zones, and sparse ingestion creates gaps too — so reporting gaps are flagged with a confidence score, not asserted as intent. The commodity metric is framed the same way: a floating-storage <em>indicator</em>, explicitly not an oil-price predictor. DQ failures are quarantined, never silently dropped.</p>
+        </article>
+      </div>
     </div>
 
     <!-- ============== Crypto Sentinel · primary project ============== -->
