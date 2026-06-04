@@ -1,66 +1,86 @@
 # JashwanthReddyE.github.io
 
-Source for my **Data Engineer portfolio site** — live at **[jashwanthreddye.github.io](https://jashwanthreddye.github.io)**.
+Personal portfolio site for **Jashwanth Reddy Earla** — a senior data engineer building streaming lakehouses, dbt warehouses, and governed analytics platforms on **Azure** and **AWS**.
 
-A single-page, dark-themed portfolio designed around the idea that *compliance, engineers, and executives should all be able to trust the same platform*. It walks through where I've shipped, the architecture pattern I keep coming back to (Lambda-style real-time + batch on Azure / AWS), specific wins with numbers, and a featured-project deep dive on my **Stock Sentiment & Forecast Pipeline**.
-
----
-
-## Sections
-
-| § | Section | What it covers |
-|---|---|---|
-| 01 | **Intro** | Senior Data Engineer · 4+ years · Azure + AWS · banking, retail, healthcare. |
-| 02 | **Experience** | Sr. Data Engineer @ CGI · Data Engineer @ Hexagon · Data Engineer @ Quality Theorem. |
-| 03 | **Reference Architecture** | The Lambda-style streaming + batch pattern I default to — Event Hub / Kafka → Databricks Structured Streaming → medallion lakehouse → Snowflake / Synapse / Redshift. |
-| 04 | **Toolkit** | Filterable, terminal-style command palette of the stack I work in. |
-| 05 | **Wins with numbers** | T+1 batch → sub-8-second event-to-alert · 8h → 2h monthly close · NL → SQL assistant for risk analysts · new-source onboarding 3 weeks → 4 days · dashboard p95 25s → <5s · audit-ready PHI lineage. |
-| 06 | **Featured Projects** | [`AISLakehouse`](https://github.com/JashwanthReddyE/AISLakehouse) — real-time maritime medallion lakehouse (AISStream → Event Hubs → Databricks + ADLS Gen2 → dark-vessel analytics, [live](https://aislakehouse.vercel.app)) · [`crypto-sentinel`](https://github.com/JashwanthReddyE/crypto-sentinel) — Azure Functions AI sentiment pipeline ([live](https://crypto-sentinel-dashboard.vercel.app)) · [`aws-stock-sentiment-pipeline`](https://github.com/JashwanthReddyE/aws-stock-sentiment-pipeline) — AWS Lambda + Bedrock + Streamlit. Each with architecture diagram and design decisions. |
-| 07 | **Contact** | LinkedIn · email. |
+> Live: **[jashwanthreddye.github.io](https://jashwanthreddye.github.io)**
 
 ---
 
-## Stack
+## About
 
-- **HTML5** — single semantic `index.html`, one-file site
-- **CSS3** — design tokens via CSS custom properties, mobile-first responsive layout, schema-grid backdrop, cursor glow
-- **JavaScript** — vanilla, no framework — scroll reveal, command-palette toggle, architecture accordion (mobile)
-- **Fonts** — Fraunces (display), Inter Tight (body), JetBrains Mono (code)
-- **Hosted on** — GitHub Pages
+Multi-cloud data engineer with **4+ years** shipping enterprise data platforms across **banking, retail, and healthcare**. I design the streaming layer, model the warehouse, wire up CI/CD, build the data-quality framework, and hand teams something they can operate without me on call. Lately I've been folding LLM-assisted tooling (Azure OpenAI, Claude, Copilot) into the development loop.
 
-No build step. No bundler. No dependencies. Just open the HTML.
+**Stack** — Azure · AWS · Snowflake · Databricks · dbt · Kafka · Event Hub · Terraform · Python · PySpark · SQL · Power BI
 
 ---
 
-## Repo layout
+## What's in this repo
 
-```
-JashwanthReddyE.github.io/
-├── index.html                              # Entire site — markup + CSS + JS inline
-└── assets/
-    ├── stock-sentiment-architecture.png    # AWS pipeline architecture diagram
-    ├── stock-sentiment-brief.png           # Dashboard — AI Forecast & Brief tab
-    ├── stock-sentiment-heatmap.png         # Dashboard — Sentiment Heatmap tab
-    └── stock-sentiment-prices.png          # Dashboard — Live Prices tab
-```
+A single-page portfolio built as a hand-tuned `index.html` — no framework, no build step. Sections:
+
+- **Hero** — typewriter intro, live pipeline visualization, headline stats
+- **About** — background and approach
+- **Experience** — tabbed timeline across CGI, Hexagon, Quality Theorem
+- **Stack & Reference Architecture** — interactive terminal + tier diagram
+- **Featured Projects** — deep-dives on shipped pipelines (below)
+- **Contact** — email, LinkedIn, GitHub
+
+Assets (architecture SVGs, dashboard screenshots) live under [`assets/`](assets/).
 
 ---
 
-## Run locally
+## Featured Projects
+
+### Crypto Sentinel — AI Sentiment Pipeline
+**[Live Dashboard](https://crypto-sentinel-dashboard.vercel.app/)** · **[Repo](https://github.com/JashwanthReddyE/crypto-sentinel)**
+
+Azure Functions pipeline that scores 24 crypto assets daily and ranks them **BUY / WATCH / AVOID**. A timer-triggered function pulls live prices, market caps, and trending lists from CoinGecko plus headline sentiment from CryptoPanic. A 6-signal scoring engine (news sentiment + three momentum windows + volume ratio + trending bonus) collapses to a single 0–100 score, exposed through two HTTP endpoints and a self-contained Vercel dashboard. Runs at **~$0.03/month** on Consumption + LRS.
+
+`Azure Functions v4` · `Python 3.11` · `CoinGecko` · `CryptoPanic` · `Vercel` · `pytest (144 tests)`
+
+### Stock Sentiment & Forecast Pipeline
+**[Repo](https://github.com/JashwanthReddyE/aws-stock-sentiment-pipeline)**
+
+End-to-end AWS pipeline scoped to the Free Tier. EventBridge fires a Lambda every 30 min pulling Finnhub news; an S3 event triggers a second Lambda that scores headlines through **Bedrock Claude Haiku** and writes Parquet to silver. A daily forecast Lambda joins prices (Alpha Vantage) with sentiment via Athena, projects a 5-day trend, and asks Claude to write a plain-English market brief. Streamlit dashboard reads it back. All provisioned with Terraform.
+
+`AWS Lambda` · `S3 Medallion` · `Bedrock` · `Glue + Athena` · `EventBridge` · `Streamlit` · `Terraform` · `pytest + moto`
+
+---
+
+## Other Repositories
+
+| Repo | What it is |
+| --- | --- |
+| [crypto-sentinel](https://github.com/JashwanthReddyE/crypto-sentinel) | Azure Functions crypto sentiment + scoring pipeline (featured above) |
+| [aws-stock-sentiment-pipeline](https://github.com/JashwanthReddyE/aws-stock-sentiment-pipeline) | AWS Lambda + Bedrock stock sentiment & forecast pipeline (featured above) |
+| [sql-data-warehouse-project](https://github.com/JashwanthReddyE/sql-data-warehouse-project) | SQL Server data warehouse — ETL, dimensional modeling, analytics layer |
+| [Gen-AI](https://github.com/JashwanthReddyE/Gen-AI) | Generative-AI experiments and notebooks (Python) |
+| [IBM](https://github.com/JashwanthReddyE/IBM) | Coursework and labs from the IBM Data Science track (Jupyter) |
+| [Portfolio](https://github.com/JashwanthReddyE/Portfolio) | Earlier portfolio iteration (HTML) |
+| [double-pendulum](https://github.com/JashwanthReddyE/double-pendulum) | MATLAB simulation of a chaotic double-pendulum system |
+| [INSE-6220](https://github.com/JashwanthReddyE/INSE-6220) | Concordia INSE 6220 — advanced statistical methods project |
+| [INSE-6230](https://github.com/JashwanthReddyE/INSE-6230) | Concordia INSE 6230 — project data |
+| [INSE-6210-Data](https://github.com/JashwanthReddyE/INSE-6210-Data) | Concordia INSE 6210 — final project dataset |
+| [INSE-6250-Phonebook](https://github.com/JashwanthReddyE/INSE-6250-Phonebook) | Java phonebook app — software-quality coursework |
+| [freecodecamp](https://github.com/JashwanthReddyE/freecodecamp) | freeCodeCamp exercises |
+
+---
+
+## Running locally
+
+No build step. Clone and open `index.html` in a browser, or serve the directory:
 
 ```bash
-git clone https://github.com/JashwanthReddyE/JashwanthReddyE.github.io.git
-cd JashwanthReddyE.github.io
 python -m http.server 8000
-# Visit http://localhost:8000
+# then visit http://localhost:8000
 ```
 
----
-
-## Deploy
-
-Pushes to `main` are served automatically by GitHub Pages at **[jashwanthreddye.github.io](https://jashwanthreddye.github.io)**.
+Deployment is automatic via **GitHub Pages** from `main`.
 
 ---
 
-*Author — [Jashwanth Reddy Earla](https://github.com/JashwanthReddyE) · Senior Data Engineer · Montreal, Canada · [LinkedIn](https://www.linkedin.com/in/jashwanthreddye/)*
+## Contact
+
+- **Email** — jashwanthreddyearla@gmail.com
+- **GitHub** — [@JashwanthReddyE](https://github.com/JashwanthReddyE)
+- **Site** — [jashwanthreddye.github.io](https://jashwanthreddye.github.io)
