@@ -1,86 +1,43 @@
-# JashwanthReddyE.github.io
+# Jashwanth Reddy Earla — Portfolio
 
-Personal portfolio site for **Jashwanth Reddy Earla** — a senior data engineer building streaming lakehouses, dbt warehouses, and governed analytics platforms on **Azure** and **AWS**.
+A single-file, zero-dependency portfolio site (`index.html`) themed as a **living data platform**. No build step, no framework — just open it or host it anywhere static.
 
-> Live: **[jashwanthreddye.github.io](https://jashwanthreddye.github.io)**
+## Dynamic features
 
----
+- **Terminal boot sequence** on first visit (`$ jash --wake portfolio`), skippable, once per session
+- **Interactive SQL console** — visitors can actually query the portfolio (`SHOW TABLES`, `SELECT … WHERE … ILIKE`, `ORDER BY`, `LIMIT`, `count(*)`, `DESCRIBE`, `EXPLAIN`, ↑ history, `sudo hire me`); press `/` to jump to it
+- **Airflow-style DAG nav** in the hero — tasks flip queued → running → done as you scroll; click to jump
+- **Animated recruiter-facing stat counters** — years, industries, batch-runtime cuts, engineers mentored
+- **Streaming event-log bar** (bottom) — pipeline events with a running ingest counter
+- **Mouse-reactive medallion canvas** — particles flow bronze → silver → gold, deflect around the cursor; click to drop a record
+- UTC clock, scroll-progress bar, scroll-spy, typewriter, radar/story/signal project visuals
+- All animation respects `prefers-reduced-motion`
 
-## About
+## Preview locally
 
-Multi-cloud data engineer with **4+ years** shipping enterprise data platforms across **banking, retail, and healthcare**. I design the streaming layer, model the warehouse, wire up CI/CD, build the data-quality framework, and hand teams something they can operate without me on call. Lately I've been folding LLM-assisted tooling (Azure OpenAI, Claude, Copilot) into the development loop.
-
-**Stack** — Azure · AWS · Snowflake · Databricks · dbt · Kafka · Event Hub · Terraform · Python · PySpark · SQL · Power BI
-
----
-
-## What's in this repo
-
-A single-page portfolio built as a hand-tuned `index.html` — no framework, no build step. Sections:
-
-- **Hero** — typewriter intro, live pipeline visualization, headline stats
-- **About** — background and approach
-- **Experience** — tabbed timeline across CGI, Hexagon, Quality Theorem
-- **Stack & Reference Architecture** — interactive terminal + tier diagram
-- **Featured Projects** — deep-dives on shipped pipelines (below)
-- **Contact** — email, LinkedIn, GitHub
-
-Assets (architecture SVGs, dashboard screenshots) live under [`assets/`](assets/).
-
----
-
-## Featured Projects
-
-### Crypto Sentinel — AI Sentiment Pipeline
-**[Live Dashboard](https://crypto-sentinel-dashboard.vercel.app/)** · **[Repo](https://github.com/JashwanthReddyE/crypto-sentinel)**
-
-Azure Functions pipeline that scores 24 crypto assets daily and ranks them **BUY / WATCH / AVOID**. A timer-triggered function pulls live prices, market caps, and trending lists from CoinGecko plus headline sentiment from CryptoPanic. A 6-signal scoring engine (news sentiment + three momentum windows + volume ratio + trending bonus) collapses to a single 0–100 score, exposed through two HTTP endpoints and a self-contained Vercel dashboard. Runs at **~$0.03/month** on Consumption + LRS.
-
-`Azure Functions v4` · `Python 3.11` · `CoinGecko` · `CryptoPanic` · `Vercel` · `pytest (144 tests)`
-
-### Stock Sentiment & Forecast Pipeline
-**[Repo](https://github.com/JashwanthReddyE/aws-stock-sentiment-pipeline)**
-
-End-to-end AWS pipeline scoped to the Free Tier. EventBridge fires a Lambda every 30 min pulling Finnhub news; an S3 event triggers a second Lambda that scores headlines through **Bedrock Claude Haiku** and writes Parquet to silver. A daily forecast Lambda joins prices (Alpha Vantage) with sentiment via Athena, projects a 5-day trend, and asks Claude to write a plain-English market brief. Streamlit dashboard reads it back. All provisioned with Terraform.
-
-`AWS Lambda` · `S3 Medallion` · `Bedrock` · `Glue + Athena` · `EventBridge` · `Streamlit` · `Terraform` · `pytest + moto`
-
----
-
-## Other Repositories
-
-| Repo | What it is |
-| --- | --- |
-| [crypto-sentinel](https://github.com/JashwanthReddyE/crypto-sentinel) | Azure Functions crypto sentiment + scoring pipeline (featured above) |
-| [aws-stock-sentiment-pipeline](https://github.com/JashwanthReddyE/aws-stock-sentiment-pipeline) | AWS Lambda + Bedrock stock sentiment & forecast pipeline (featured above) |
-| [sql-data-warehouse-project](https://github.com/JashwanthReddyE/sql-data-warehouse-project) | SQL Server data warehouse — ETL, dimensional modeling, analytics layer |
-| [Gen-AI](https://github.com/JashwanthReddyE/Gen-AI) | Generative-AI experiments and notebooks (Python) |
-| [IBM](https://github.com/JashwanthReddyE/IBM) | Coursework and labs from the IBM Data Science track (Jupyter) |
-| [Portfolio](https://github.com/JashwanthReddyE/Portfolio) | Earlier portfolio iteration (HTML) |
-| [double-pendulum](https://github.com/JashwanthReddyE/double-pendulum) | MATLAB simulation of a chaotic double-pendulum system |
-| [INSE-6220](https://github.com/JashwanthReddyE/INSE-6220) | Concordia INSE 6220 — advanced statistical methods project |
-| [INSE-6230](https://github.com/JashwanthReddyE/INSE-6230) | Concordia INSE 6230 — project data |
-| [INSE-6210-Data](https://github.com/JashwanthReddyE/INSE-6210-Data) | Concordia INSE 6210 — final project dataset |
-| [INSE-6250-Phonebook](https://github.com/JashwanthReddyE/INSE-6250-Phonebook) | Java phonebook app — software-quality coursework |
-| [freecodecamp](https://github.com/JashwanthReddyE/freecodecamp) | freeCodeCamp exercises |
-
----
-
-## Running locally
-
-No build step. Clone and open `index.html` in a browser, or serve the directory:
-
-```bash
-python -m http.server 8000
-# then visit http://localhost:8000
+```powershell
+python -m http.server 4173
+# open http://localhost:4173
 ```
 
-Deployment is automatic via **GitHub Pages** from `main`.
+## Deploy
 
----
+- **GitHub Pages** — copy `index.html` into the `JashwanthReddyE.github.io` repo and push; it goes live at https://jashwanthreddye.github.io/ (the URL the resume already links to).
+- **Vercel** — `vercel --prod` from this folder.
 
-## Contact
+## Editing content
 
-- **Email** — jashwanthreddyearla@gmail.com
-- **GitHub** — [@JashwanthReddyE](https://github.com/JashwanthReddyE)
-- **Site** — [jashwanthreddye.github.io](https://jashwanthreddye.github.io)
+Everything lives in `index.html`:
+
+| What | Where |
+|---|---|
+| Hero headline, typewriter phrases, stats | `<header>` + the `phrases` array in the script |
+| SQL console data (tables/rows) | the `DB` object in the `sqlConsole` IIFE |
+| Boot log lines | the `lines` array in the `boot` IIFE |
+| Event-log messages | the `pool` array in the `evlog` IIFE |
+| Skills chips | `#skills` section |
+| Experience bullets + run-status strips | `#experience` section (`.job` articles) |
+| Project cards, lineage rows, links | `#projects` section (`.proj-card` articles) |
+| Contact links | `#contact` section |
+
+Highlighted metrics use `<span class="m">…</span>`; tech tags use `<span class="chip">…</span>`.
